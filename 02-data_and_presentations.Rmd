@@ -1,0 +1,85 @@
+---
+title: "Data and Presentations"
+output: 
+  html_document: 
+    theme: readable
+---
+
+```{r setup-datatables, include=FALSE}
+library(tidyverse)
+library(ggformula)
+library(mosaic)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Here is a very general, dictionary definition of "data"
+
+> factual information (as measurements or statistics) used as a basis for reasoning, discussion, or calculation -- [Merriam-Webster dictionary](https://www.merriam-webster.com/dictionary/data)
+
+Let's re-organize this definition into three components: raw facts; calculation; reasoning and discussion. These three components translate into three broad classes of data:
+
+1. **Non-tabular data** which can be any record, be it in the form of notes from interviews, photographs, sound and signal recordings, readings from lab instruments, documents, medical records, etc. These are the "facts" in the dictionary definition.
+2. **Tabular data**, a spreadsheet-like organization, which is by far the most widely used for statistical calculation.
+3. **Data presentations**, that is, data formatted in a way to be more-or-less directly accessible to human perception, discussion, and reasoning. One of the most useful forms of data presentation is graphics, but there are others.
+
+We'll be mainly concerned with the calculations by which tabular data is transformed into presentations. The tabular format for data provides a standard that makes it straightforward to perform many of the calculations, allows different software tools to interoperate, and provides the mean to combine data from different sources in creative and flexible ways.
+
+## 1. Non-tabular data
+
+As an example of non-tabular data, consider the records from one of the earliest statistical projects, Francis Galton's investigation in the 1880s of the heritability of biological traits. Records of Galton's collection of data on the heights of adult children and their parents are contained in Galton's notebook, a portion of which is displayed in Figure 1.
+
+![](images/galton-notebook.jpg)
+
+Figure 1: *Part of a page from Francis Galton's notebook.*
+
+
+
+You can imagine how Galton might have collected these data, going from house to house in London, tacking a yardstick to a wall, and having the various members of the family stand in front of the ruler to measure their heights. A yardstick isn't a suitable length to measure height from the floor to the head, so perhaps Galton positioned the yardstick at a height of 5 feet above the floor and recorded the number of extra inches above that. So recording a daughter with a height of 9.2 means that her actual height was 5 ft 9.2 inches, or 69.2 inches.
+
+Galton's notebook is neatly organized, but it's raw data, not in the kind of tabular form used in statistical calculations.
+
+## 2. Tabular data
+
+Tabular data is organized as a rectangular array. There are two coordinates to a rectangle, and similarly there are two coordinates to tabular data:
+
+1. Rows, also called "cases" or "units of observation."
+2. Columns, also called "variables"
+
+Here's one possible organization of the height measurements in Galton's notebook rendered  into a tabular form:
+
+```{r echo = FALSE}
+data(Galton, package = "mosaicData")
+DT::datatable(Galton,
+              options = list(pageLength = 5))
+```
+
+Figure 2: *Galton's notebook observations translated to a tabular form.*
+
+## 3. Data presentations
+
+You can page through the Galton data table but it is very hard to draw conclusions from the table itself. *Data presentations* show data in a manner better suited for interpretation by people. The proper design of the presentation depends on its *purpose*: what aspect of the data you wish to emphasize. There can be very different presentations of the same data for different purposes.
+
+```{r echo = FALSE}
+Galton %>%
+  ggplot(aes(x = height, fill = sex)) +
+  geom_density(alpha = .5, color = NA)
+```
+
+Figure 3: *A graphical presentation of Galton's data for the purpose of comparing heights by sex.*
+
+Presentations often are numerical in form, such as this report of the means and standard deviations of the heights of the girls and boys in Galton's data.
+
+```{r}
+Galton %>%
+  group_by(sex) %>%
+  summarize(m = mean(height), s = sd(height)) %>%
+  print.data.frame()
+```
+
+Or, consider this rather more technical presentation on the difference in mean heights between the sexes:
+
+```{r}
+statprep::htest(height ~ sex, data = Galton) 
+```
+
+Much of what we teach in intro stats is about familiarizing students with a variety of forms of data presentations and how to draw conclusions from them.

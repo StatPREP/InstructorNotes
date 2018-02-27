@@ -11,4 +11,6 @@ Large and growing student interest in computer science and statistics. That grow
 3. Statistical description
 4. Prediction
 
+## Pocket guide to StatPREP commands
 
+See `Essential_statprep_command.key`. Maybe put a copy of it here, or a full-page version.
