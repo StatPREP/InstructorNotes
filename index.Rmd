@@ -1,0 +1,14 @@
+--- 
+title: "StatPREP: Data-driven statistics"
+author: "Daniel Kaplan"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: statprep/statprep-book
+description: "Notes for instructors when teaching StatPREP lessons"
+---
+

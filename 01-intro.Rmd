@@ -1,0 +1,14 @@
+# Teaching Data-driven Statistics {#intro}
+
+Description, prediction, decision
+
+Large and growing student interest in computer science and statistics. That growing interest is not simply a matter of new subjects receiving attention or of transient employment opportunities. The interest reflects systemic changes in the technical infrastructure of life and work in the US and the world due to the emergence of ubiquitous computing. Among other things, computing has led to an explosion in the availability of data and to the ability to explore systems at a greater level of complexity and a finer level of detail. Since computers always work with a mathematical representation of the world, the ability to construct and interpret such representations (aka “modeling”) is now a core part of research, commercial, industrial, medical, social, and government activities. Mathematical skills, particularly in applied math and statistics, are essential here.
+
+
+
+1. Wrangling
+2. Visualization
+3. Statistical description
+4. Prediction
+
+
