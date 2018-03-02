@@ -1,0 +1,9 @@
+# Organizing stats
+
+Much emphasis in stats courses is given to the arithmetic involved in calculating statistics such as the mean and standard deviation. This might be a valid way to introduce concepts, but in data science the computation of the statistic itself is a trivial (but essential!) part of the overall work. The difficult part is keeping track of the results so that they can be presented and so that they can play a role in additional calculations.
+
+For instance, presenting the mean with its confidence interval involves computing these statistics: the mean, the standard deviation, $n$. Glueing them together into the confidence interval requires more operations: addition, subtraction, division, square roots, and (for very small $n$) looking up a value from the t-distribution.
+
+Such a complicated sequence of operations makes a good example for an introductory programming course. Even the programming involved in storing a confidence interval (a pair of numbers) exercises substantial programming skills.
+
+Keeping the whole process in mind, even when using familiar tools such as paper and pencil, imposes a substantial cognitive load and distracts from the main objective: drawing meaningful conclusions from data. Our objective here is to streamline the process so that we can think about how to use statistics rather than how to calculate statistics.

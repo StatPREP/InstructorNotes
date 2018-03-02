@@ -1,0 +1,165 @@
+---
+title: "Data Tables"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#library(learnr)
+library(tidyverse)
+library(mosaicData)
+knitr::opts_chunk$set(echo = FALSE)
+```
+# Data Frames
+
+something here
+
+## Rows and columns
+
+Data tables are organized into rows and columns. 
+
+* Each row is a *unit of observation*.
+* Each column is a *variable*.
+
+### Unit of observation
+
+The *unit of observation* is the kind of thing each row corresponds to in the real world. In Figure 2, the unit of observation is a child. Galton recorded heights of 898 children in his notebook so there are 898 rows in the data table.
+
+In a properly arranged data table, every row is about the same sort of observational unit. If you have different types of observational units, they should be in different tables. For instance, you might have a table giving the address of each family. That should not be intermixed with the table where the unit of observation is a child. Instead, it would be in a separate table where the unit of observaton is a family.
+
+### Variables
+
+Each column of a data table is a *variable*. The individual entries in the column are *values* of the variable. The word "variable" reflects that the values vary from row-to-row.
+
+In the Galton table, there are six different variables:
+
+1. An ID for the family.
+2. The family's father's height. (inches)
+3. The family's mother's height. (inches)
+4. The sex of the child.
+5. The child's height. (inches)
+6. The number of children in the family.
+
+In properly arranged tabular data, the value for any particular variable is the *same kind of thing* for every observational unit. For instance, the `father` variable is the height of the father in inches. Values of the `sex` variable are always "F" or "M". 
+
+## Kinds of values
+
+Data tables are composed of two main types of variables:
+
+1. **Quantitative**: a number.
+2. **Categorical**: a label, typically written using characters.
+
+In the Galton data table, the `sex` variable is categorical and consists of the labels `"F"` and `"M"`. The other variables are quantitative. But note that the `family` variable, although expressed as numbers, is actually a categorical variable: all that matters about the values in `family` is that they are distinct. The order is of no particular meaning; we can't say that family 4 is in between families 2 and 5.
+
+Quantitative variables typically represent some real-world quantity such as height, age, blood pressure, etc. Such real-world quantities often have *units*, e.g. inches, years, millimeters of mercury (mmHg).
+
+In a properly organized data table, the units of the quantitative variable are *not* part of the value; they are implicit. A good reason for this is that in properly organized data, the a variable's unit should be the same in every row. This is part of what it means that all the values are *the same kind of thing*.
+
+For a categorical variable, the set of possible values of the variables are called the *levels* of the variable. In the Galton `sex` variable, the set consists of `"F"` and `"M"`.
+
+### Missing data
+
+In both quantitative and categorical values are sometimes *missing*. Historically, such missingness was often denoted with a special numerical value such as `-999` or with a special level such as `"missing"`. This is a poor practice, since it's easy to mistakenly treat those values as if they were non-missing. Instead, a special token is used to indicate missing data: `NA`.
+
+## The codebook
+
+How are you to know what are the physical units of a quantitative variable or the legitimate levels of a categorical variable? This information is contained in a *codebook* associated with the data table. Codebook can take the form of an actual book, a text file, a spreadsheet, a PDF document, etc.
+
+Many of the data tables we will be working with have codebooks available through the R `help()` system. For instance, the following command chunk will display the codebook for the `Galton` data table:
+
+```{r codebook0, exercise = TRUE, exercise.cap = "Getting an R codebook."}
+help(Galton)
+```
+
+## Tables and files
+
+Data tables are typically stored as computer files. There are many formats for such files in use. One popular file format is called *CSV* (comma-separated values). The particular file format does not really matter, so long as you can find the appropriate software to read the file. Similarly, the physical location of the file does not really matter, so long as you have access to it.
+
+### Loading data
+
+When using statistical software, data tables are "read in" to the software. This is often called *loading* the data table. The R statistical software has a standard representation of a data table, called a "data frame." There are several widely used implementations of data frames and so you may see referenced to `data.frame`, `tibble`, etc.
+
+In general, a first step in using data is to load the data from a file into a data frame. Almost always, the data frame is given a name by which the table can be referred.
+
+The following command chunk has two commands. The first reads in a small data table from a file on the internet, creating a data frame given the name `Baseball`. The second causes the data frame to be printed.
+
+```{r baseball0, exercise = TRUE, message = FALSE}
+Baseball <- read_csv("http://tiny.cc/mosaic/ALWINS.csv")
+Baseball
+```
+
+### R-package data
+
+Many of the data tables we will use in these notes have already been loaded into R by instructing R to use a *library* or *package* containing the data. This is the case with the `Galton` example, which comes from the `mosaicData` package.
+
+For the present, you don't need to be concerned with how to load R-package data. It will be done for you. But do remember that somewhere there is a computer file containing the data and that it is being loaded in to R with software appropriate for that format of file.
+
+
+## Textbook data
+
+Recall the distinction between tabular data and a *presentation* constructed from the data. Textbooks are oriented to the human reader and, naturally, they tend to use forms indended for the human reader. Thus, much of the "data" in textbooks is in the form of presentations such as the cross-tabulation in Figure 1. 
+
+
+![](images/migrane-isrs1.png)
+
+Figure 1: *A data presentation from the open source textbook "Intro Stat with Simulation and Randomization" [ISRS](https://www.openintro.org/stat/textbook.php?stat_book=isrs).* 
+
+A stickler might argue that the table in Figure 1 can be construed as a data table, but for our purpose here, let's take a pragmatic approach to defining what constitutes the sorts of data used in data science. In particular, these notes will focus on data that contain many rows and are available in machine-readable form. Or, stated another way, we'll work with data *before* they have been aggregated into the sort of presentation seen in Figure 1.
+
+
+It's easy to imagine what the disaggregated data table that underlies this presentation might look like: perhaps this one where the unit of observation is a person:
+
+patient | accupuncture | pain    | date       | technician
+--------|--------------|---------|------------|------------
+A2322   | control      | yes     | 2014-03-15 | Audrey
+A2397   | treatment    | yes     | 2014-03-17 | Audrey
+A3213   | treatment    | no      | 2014-03-17 | Bill
+B8732   | treatment    | no      | 2014-03-18 | Audrey
+C6920   | control      | yes     | 2014-03-18 | Bill
+$\vdots$ | $\vdots$    |$\vdots$ | $\vdots$   | $\vdots$
+
+Figure 2: *What the underlying data from Figure 1 might have looked like, presented as a data table.*
+
+By learning the tools to work with data tables, you can easily create presentations like the cross-tabulation in Figure 1. But you also have the ability to explore other possible explanations for the variation in pain, such as the effectiveness of the technician or the day of the week.
+
+## Example
+
+Figure 3 shows a style of presentation common in intro stats textbooks.
+
+![](images/Data-honeybees.png)
+
+![](images/Data-honeybees-1.png)
+
+Figure 3: *A textbook presentation of data (Source: 2016 GAISE College Report)*
+
+The data are almost in tabular form. Does it matter that the variables are arranged as rows rather than columns? Not in any mathematical sense, but it is a violation of the standard format for data, which means that the data will be (slightly) more difficult to work with: you'll have to transform them to the standard before performing calculations.
+
+The textbook provides a brief description of the data, including an explanation of the meaning of the variables and their units, and an indication of the source. Since data tables are usually stored as a computer file, such descriptive information is stored in an auxilliary file called a "codebook."
+
+Note that the variable names --- `Duration (seconds)` and `Distance (meters)` --- include the units. This is appropriate in a data presentation. But the data table from which this presentation originates should not include the units; that information can be placed in the codebook.
+
+Figure 4 shows two imagined data-table forms for the honeybee data. The left form has included the units --- seconds and meters. In the left table, the two variables are actually categorical, not numeric. Look closely at the printed table. Under the variable name, it includes a brief description of the type of variable. `chr` stands for "character", which is to say that the variables in the left table are being stored as character strings. The table on the right properly presents the values as numeric. (The notation `dbl` refers to a particular internal format for the numbers, a "double-precision-floating point number". You will also see, from time to time, `int`, which indicates that the number is stored in computer integer format. In your calculations, you don't need to worry about which type of storage format is used for numerical data.)
+
+```{r echo = FALSE}
+Dances1 <- tribble(
+  ~ duration, ~ distance, 
+  "0.40 sec", "200 m",
+  "0.45 sec", "250 m",
+  "0.95 sec", "500 m",
+  "1.30 sec", "950 m"
+)
+Dances2 <- Dances1 %>% mutate(duration = parse_number(duration),
+                              distance = parse_number(distance))
+```
+
+<table>
+<tr><th>Improper form</th><th> </th><th>Proper form</th></tr>
+<tr><td width="28%">`r knitr::kable(Dances1)`</td><td width="5%">&nbsp;</td><td width = "25%>`r knitr::kable(Dances2)`</td></tr>
+</table>
+
+\begin{tabular}{cc}
+Improper form & Proper form\\
+`r knitr::kable(Dances1)` & `r knitr::kable(Dances2)`\\
+\end{tabular}
+
+Figure 4: *Two possible ways of arranging the honeybee data in a data table. The left one is awkward: the variables are categorical even though they represent physical quantities. The right table properly has quantitative variables: their values are numbers. The physical meaning for the number is described in the codebook, which here takes the form of descriptive text in the book.* 
+

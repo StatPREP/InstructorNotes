@@ -5,6 +5,8 @@ output:
     theme: readable
 ---
 
+# Data and Presentations
+
 ```{r setup-datatables, include=FALSE}
 library(tidyverse)
 library(ggformula)
@@ -24,7 +26,7 @@ Let's re-organize this definition into three components: raw facts; calculation;
 
 We'll be mainly concerned with the calculations by which tabular data is transformed into presentations. The tabular format for data provides a standard that makes it straightforward to perform many of the calculations, allows different software tools to interoperate, and provides the mean to combine data from different sources in creative and flexible ways.
 
-## 1. Non-tabular data
+## Non-tabular data
 
 As an example of non-tabular data, consider the records from one of the earliest statistical projects, Francis Galton's investigation in the 1880s of the heritability of biological traits. Records of Galton's collection of data on the heights of adult children and their parents are contained in Galton's notebook, a portion of which is displayed in Figure 1.
 
@@ -38,7 +40,7 @@ You can imagine how Galton might have collected these data, going from house to 
 
 Galton's notebook is neatly organized, but it's raw data, not in the kind of tabular form used in statistical calculations.
 
-## 2. Tabular data
+## Tabular data
 
 Tabular data is organized as a rectangular array. There are two coordinates to a rectangle, and similarly there are two coordinates to tabular data:
 
@@ -55,7 +57,7 @@ DT::datatable(Galton,
 
 Figure 2: *Galton's notebook observations translated to a tabular form.*
 
-## 3. Data presentations
+## Data presentations
 
 You can page through the Galton data table but it is very hard to draw conclusions from the table itself. *Data presentations* show data in a manner better suited for interpretation by people. The proper design of the presentation depends on its *purpose*: what aspect of the data you wish to emphasize. There can be very different presentations of the same data for different purposes.
 
