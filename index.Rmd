@@ -15,5 +15,5 @@ always_allow_html: yes
 
 # Pocket guide to StatPREP commands
 
-![](images/essential_statprep_commands.png)]
+![](images/essential_statprep_commands.png)
 

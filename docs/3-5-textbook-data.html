@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="StatPREP: Data-driven statistics" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="Notes for instructors when teaching StatPREP lessons" />
+<meta name="github-repo" content="statprep/statprep-book" />
+
+<meta name="author" content="Daniel Kaplan" />
+
+<meta name="date" content="2018-02-27" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="Notes for instructors when teaching StatPREP lessons">
+
+<title>StatPREP: Data-driven statistics</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/jquery-1.12.4/jquery.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<!--bookdown:toc:end-->
+<!--bookdown:toc:start-->
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="textbook-data" class="section level2">
+<h2><span class="header-section-number">3.5</span> Textbook data</h2>
+<p>Recall the distinction between tabular data and a <em>presentation</em> constructed from the data. Textbooks are oriented to the human reader and, naturally, they tend to use forms indended for the human reader. Thus, much of the “data” in textbooks is in the form of presentations such as the cross-tabulation in Figure 1.</p>
+<div class="figure">
+<img src="images/migrane-isrs1.png" />
+
+</div>
+<p>Figure 1: <em>A data presentation from the open source textbook “Intro Stat with Simulation and Randomization” <a href="https://www.openintro.org/stat/textbook.php?stat_book=isrs">ISRS</a>.</em></p>
+<p>A stickler might argue that the table in Figure 1 can be construed as a data table, but for our purpose here, let’s take a pragmatic approach to defining what constitutes the sorts of data used in data science. In particular, these notes will focus on data that contain many rows and are available in machine-readable form. Or, stated another way, we’ll work with data <em>before</em> they have been aggregated into the sort of presentation seen in Figure 1.</p>
+<p>It’s easy to imagine what the disaggregated data table that underlies this presentation might look like: perhaps this one where the unit of observation is a person:</p>
+<table>
+<thead>
+<tr class="header">
+<th>patient</th>
+<th>accupuncture</th>
+<th>pain</th>
+<th>date</th>
+<th>technician</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A2322</td>
+<td>control</td>
+<td>yes</td>
+<td>2014-03-15</td>
+<td>Audrey</td>
+</tr>
+<tr class="even">
+<td>A2397</td>
+<td>treatment</td>
+<td>yes</td>
+<td>2014-03-17</td>
+<td>Audrey</td>
+</tr>
+<tr class="odd">
+<td>A3213</td>
+<td>treatment</td>
+<td>no</td>
+<td>2014-03-17</td>
+<td>Bill</td>
+</tr>
+<tr class="even">
+<td>B8732</td>
+<td>treatment</td>
+<td>no</td>
+<td>2014-03-18</td>
+<td>Audrey</td>
+</tr>
+<tr class="odd">
+<td>C6920</td>
+<td>control</td>
+<td>yes</td>
+<td>2014-03-18</td>
+<td>Bill</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 2: <em>What the underlying data from Figure 1 might have looked like, presented as a data table.</em></p>
+<p>By learning the tools to work with data tables, you can easily create presentations like the cross-tabulation in Figure 1. But you also have the ability to explore other possible explanations for the variation in pain, such as the effectiveness of the technician or the day of the week.</p>
+</div>
+<p style="text-align: center;">
+<a href="3-4-tables-and-files.html"><button class="btn btn-default">Previous</button></a>
+<a href="3-6-example.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
