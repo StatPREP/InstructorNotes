@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="your-course-web-site.html">
-<link rel="next" href="using-rstudio-cloud.html">
+<link rel="prev" href="class-data-using-google-sheets.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -141,74 +141,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="class-data-using-google-sheets" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Class data using Google Sheets</h1>
-<p>Collecting data interactively with students has several benefits:</p>
-<ol style="list-style-type: decimal">
-<li>Students see the connection between the data and their own actions. Students are especially motivated when the data is about them or something they are doing.</li>
-<li>The inevitable imperfections in user-entered data serve as a lesson in coding factors and the measuring variables in a standard way.</li>
-<li>The instructor (or individual students) can analyze the data and see how the analysis changes in real time, as more data rows are added.</li>
-</ol>
-<div id="resources" class="section level2">
-<h2><span class="header-section-number">4.1</span> Resources</h2>
-<p>Two example lessons, from the StatPREP 2018 Workshops are:</p>
-<ul>
-<li><a href="http://dtkaplan.shinyapps.io/tutorial_globe_toss.png">Globe toss</a></li>
-<li><a href="http://dtkaplan.shinyapps.io/Tutorial_Riverboat_shuffle.png">Riverboat card trick</a></li>
-</ul>
-<p>You’re welcome to use those interactive documents. Each document has a link to the spreadsheet for entering data. It’s your own choice whether to start by clearing out any existing rows or add on to the rows from another session. <strong>NOTE</strong>: No guarantee that your class’s data will be there later on, since someone else might have erased it. And so you might want to set up your own spreadsheet exclusively for your class’s use.</p>
-<p>The section below on <em>Setting up a new spreadsheet</em> shows how to create a spreadsheet for your class. Note that you should post the link to your spreadsheet on your course website, so that students can access it to enter data.</p>
-<p>For data analysis, you have a choice of options:</p>
-<ol style="list-style-type: decimal">
-<li>Use the <a href="http://dtkaplan.shinyapps.io/Lesson_read_class_data.png">Read class data</a> activity. The user will have to paste the command to read in your spreadsheet at the start of every command block. (See <em>Setting up a new spreadsheet</em>.)</li>
-<li>Use your own R session. Again, you will need to give the command to read in your spreadsheet into the console.</li>
-<li>Create your own tutorial document in Rmd. This presumes that you are comfortable editing Rmd documents and, if you want to give your students access, publishing them on a server. A working template is available via the StatPREP Workshops2018 project on <code>rstudio.cloud</code>. (<a href="https://rstudio.cloud/project/38547">Follow this link.</a> to the file <code>Google_data_template.Rmd</code>.)</li>
-</ol>
-</div>
-<div id="setting-up-a-new-spreadsheet" class="section level2">
-<h2><span class="header-section-number">4.2</span> Setting up a new spreadsheet</h2>
-<p>You can modify this document to work with a spreadsheet of your own. Here’s how.</p>
-<ol style="list-style-type: decimal">
-<li>Set up a Google spreadsheet. It’s a good idea to populate it with some variable names and a few values. This will let you test to make things are working before you start the activity in class.</li>
-<li><p><em>Within</em> the Google spreadsheet document press the “Share” button.</p>
-<p><img src="images/google1.png" /><!-- --></p></li>
-<li><p>After you press “Share,” you will see a dialog box.</p>
-<p><img src="images/google2.png" /><!-- --></p>
-<ul>
-<li>Pull down the menu to select “Anyone with the link <strong>can edit</strong>.” (This is what lets your students add data.)</li>
-<li>Copy the link and paste it somewhere you can get to it again. You’ll need it. The link will look like this: <code>https://docs.google.com/spreadsheets/d/1ucevNh7wKLtOukyEpacUKi5_-KZUQGtIOONhWRnnnQ4/edit?usp=sharing</code></li>
-<li>You will also need to copy the <em>key</em> that’s contained in the link. The key is just the central gibberish in the link, like this: <code>1ucevNh7wKLtOukyEpacUKi5_-KZUQGtIOONhWRnnnQ4</code></li>
-</ul></li>
-<li><p>Put the link on your course web site so that your students can get to it. That’s how they will access the spreadsheet for entering data.</p></li>
-<li><p>Back in your Google sheet, select the File/Publish_to_the_web menu item. Use the resulting dialog box to publish the entire document.</p></li>
-</ol>
-<p><img src="images/publish1.png" /> <img src="images/publish2.png" /></p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>Create the R command that will load the spreadsheet data into your R session.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Globe &lt;-<span class="st"> </span><span class="kw">gs_read</span>(<span class="kw">gs_key</span>(<span class="st">&quot;1ucevNh7wKLtOukyEpacUKi5_-KZUQGtIOONhWRnnnQ4&quot;</span>))</code></pre></div>
-<p>In forming the command, replace the quoted string in the above with your own key. The key is located in the center of the link to the spreadsheet: an incomprehensible set of characters similar to that highlighted in <strong>bold</strong> in the example in step (3). You might also replace <code>Globe</code> with a name that’s more suited to your own activity.</p>
-<p>Paste the command you’ve created someplace handy. You’ll need it. (Suggestion: Paste it next to the link in step (4).)</p></li>
-</ol>
-<p>Time for class!</p>
-<ol start="7" style="list-style-type: decimal">
-<li>Once you reach the point in your class where you want to do statistics on your data, bring up the lesson document provided for this purpose by StatPREP <a href="http://dtkaplan.shinyapps.io/Lesson_read_class_data.png">located here</a>. That document has several R command chunks, all of which are blank. You can put any R commands in those chunks, <strong>but make sure</strong> that the command from step (5) always is the first command in any chunk that you use. That way, whenever you run the code in the chunk, the data will be read in from Google. Keep in mind that the chunks are all independent of one another, so you’ll need to read in the data in any chunk you use.</li>
-</ol>
-<p>Try it out in the following command chunk:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Paste in the command you created in step (5).</li>
-<li>Below that, add any R commands you like.</li>
-</ol>
-<p>For instructors who want to write their own tutorial, you will find that this simplifies things since you can arrange to have the spreadsheet data read-in globally and not have to put the data-reading command in every chunk. Use the template <code>.Rmd</code> document provided by StatPREP <a href="">here</a>. Modify the chunk named <code>read_data</code> the top of the document by inserting your own command (with your own key). Notice that in any new chunk you create, you’ll have to reference the <code>read_data</code> chunk as the <code>exercise-setup</code>. The chunks already in the template document do this, so you can just copy (and rename!) an existing chunk.</p>
+<div id="using-rstudio.cloud" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Using RStudio.cloud</h1>
+<p>Just some preliminary notes …</p>
+<p>Under preferences/Rmd, arrange to have the preview opened in the Viewer tab. It doesn’t seem to work to leave it as opening in a web page.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="your-course-web-site.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-rstudio-cloud.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="class-data-using-google-sheets.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -238,7 +183,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/statprep/statprep-notes/edit/master/010-shared-spreadsheets.Rmd",
+"link": "https://github.com/statprep/statprep-notes/edit/master/015-Rstudio-cloud.Rmd",
 "text": "Edit"
 },
 "download": ["statprep-notes.pdf", "statprep-notes.epub"],

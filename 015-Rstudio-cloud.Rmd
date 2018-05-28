@@ -1,0 +1,20 @@
+--- 
+title: "StatPREP: Instructor Notes"
+author: "Daniel Kaplan"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: statprep/statprep-book
+description: "Notes for instructors teaching with StatPREP materials"
+always_allow_html: yes
+---
+
+# Using RStudio.cloud
+
+Just some preliminary notes ...
+
+Under preferences/Rmd, arrange to have the preview opened in the Viewer tab. It doesn't seem to work to leave it as opening in a web page.

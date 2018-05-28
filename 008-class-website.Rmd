@@ -33,7 +33,7 @@ At this point, make sure that you have a GitHub account. (See \@ref(signing-up-f
 1. Open up another browser window, so that you can look at these instructions at the same time as you are working on your site.
 1. Login to GitHub in the browser window you opened in (1).
 2. Open up one of the following links in the other browser window.
-    - [One-file web site]()
+    - [One-file web site](https://github.com/StatPREP/one-page-website)
     - [RStudio edited web site](https://github.com/StatPREP/website-template)
     These are both "repositories" under the StatPREP organization.
 3. Whichever option you selected in (2), find the "Fork" button in the upper right-hand corner of the StatPREP repository. Chances are, you'll be asked whether you want to set this up in your own account. You do. 
@@ -43,7 +43,7 @@ At this point, you should have two browser windows open. One for these instructi
 4. Press the ![](images/settings-github.png) button. In the page that appears ...
 
     a. Change the name of the repository to something appropriate for your course. Stat_105? Keep it short and don't use any spaces. Use underscores instead.
-    b. Scroll down to the section in GitHub pages. 
+    b. Scroll down to the settings section headed GitHub pages. 
     ![](images/gh-pages.png)
     Select the drop-down menu to read "master branch /docs folder".
     c. Copy the link that follows "Your site is published at ...." This is the link you will give your students. Note that it is formed from your GitHub ID and the repository name. That's why you want both of these to be memorable.
