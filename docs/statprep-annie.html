@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="signing-up-for-cloud-services.html">
+<link rel="prev" href="signing-up-for-cloud-services.html">
+<link rel="next" href="your-course-web-site.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -146,26 +146,66 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">StatPREP: Instructor Notes</h1>
-<h4 class="author"><em>Daniel Kaplan</em></h4>
-<h4 class="date"><em>2018-06-05</em></h4>
+<div id="statprep-annie" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> StatPrep Annie</h1>
+<p>StatPrep Annie is a persona created to depict a real-world StatPREP instructor who is setting up their statistics course.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="images/Annie-thumbnail.png" alt="StatPrep Annie"  />
+<p class="caption">
+Figure 3.1: StatPrep Annie
+</p>
 </div>
-<div id="pocket-guide-to-statprep-commands" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Pocket guide to StatPREP commands</h1>
+<p>She’s got a website for her course, a couple of interactive lessons, and so on.</p>
+<p>Here’s how she set them up and uses them to communicate with her students, write the occasional homework assignment, and so on.</p>
+<div id="setup" class="section level2">
+<h2><span class="header-section-number">3.1</span> Setup</h2>
+<p>Annie had a gmail account already, <code>StatPrep_Annie@gmail.com</code>. She used this account to set up cloud accounts on:</p>
+<ul>
+<li><a href="http:/rstudio.cloud">rstudio.cloud</a></li>
+<li><a href="http://shinyapps.io">shinyapps.io</a></li>
+</ul>
+<p>Use your own gmail account to set up accounts for your own use. If you don’t have a gmail account, you can set one up as described in Section [#github].</p>
+</div>
+<div id="authorizing-rstudio.cloud-to-publish" class="section level2">
+<h2><span class="header-section-number">3.2</span> Authorizing rstudio.cloud to publish</h2>
+<p>You need to authorize <code>rstudio.cloud</code> to publish to your <code>shinyapps.io</code> account. How do you do this? The general idea is that you login to <code>shinyapps.io</code> and ask it to tell you a secret. Then, from <code>rstudio.cloud</code>, you send that secret back to <code>shinyapps.io</code>. Once <code>shinyapps.io</code> knows that <code>rstudio.cloud</code> is in on the secret, shinyapps will accept future commands from you <code>rstudio.cloud</code> account.</p>
+<ol style="list-style-type: decimal">
+<li>Login to your account on <code>rstudio.cloud</code>.</li>
+<li>Open any project on <code>rstudio.cloud</code>.
+<ul>
+<li>From the RStudio interface, select the “Packages” tab and press “Install”. <img src="images/annie-install-rsconnect1.png" style="display: block; margin: auto;" /></li>
+<li>In the dialog box that appears, start typing <code>rsconnect</code>. At some point, the dropdown menu will show that choice. Click on that and press “Install”.</li>
+</ul></li>
+</ol>
+<p><img src="images/annie-install-rsconnect2.png" style="display: block; margin: auto;" /> 3. Login to <code>shinyapps.io</code>. Select the “Dashboard” tab. You’ll see a section entitled “Authorize account” with a display of computer code and a “copy to clipboard” button. Press that button. <img src="images/annie-authorize-cloud2.png" /><!-- --> Depending on your browser, you may be asked to press CNTR-C to copy the code.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Return to the console in <code>rstudio.cloud</code> and paste in the code you copied in (3).</li>
+</ol>
+</div>
+<div id="publishing-your-website" class="section level2">
+<h2><span class="header-section-number">3.3</span> Publishing your website</h2>
+<ol style="list-style-type: decimal">
+<li>From your rstudio.cloud account, open your website project. In that project, open the <code>index.Rmd</code> file. Press “Knit”.</li>
+</ol>
+<p><img src="images/annie-knit-webpage.png" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>In response to your pressing “Knit”, RStudio will do some work and in a couple of seconds put up a window looking like this:</li>
+</ol>
 <div class="figure">
-<img src="images/essential_statprep_commands.png" />
+<img src="images/annie-publish-webpage.png" />
 
 </div>
+<p>Press the “Publish” button. - Select “RStudio Connect” - Select “Publish finished document only” - In the dialog box titled “Select RStudio Connect Account”, type the address <code>shinyapps.io</code>.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="signing-up-for-cloud-services.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="signing-up-for-cloud-services.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="your-course-web-site.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -195,7 +235,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/statprep/statprep-notes/edit/master/index.Rmd",
+"link": "https://github.com/statprep/statprep-notes/edit/master/006-StatPrep-Annie.Rmd",
 "text": "Edit"
 },
 "download": ["statprep-notes.pdf", "statprep-notes.epub"],

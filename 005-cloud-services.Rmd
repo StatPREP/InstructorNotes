@@ -37,6 +37,8 @@ In selecting your user ID for GitHub, keep in mind that the ID is something that
 
 Follow [this link to GitHub's account creation page](https://github.com/). And *don't be intimidated* by the "Built for developers" label. 
 
+Once you've set up your account, GitHub will email a confirmation letter. **Make sure to click the confirm button** in the email.
+
 ## RStudio cloud
 
 We want you to have access to RStudio so that you can use it *if you decide you want to*. We'll show everyone some basics at the workshop so you can make an informed decision.
