@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-06-04}
+  \date{2018-06-06}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -216,6 +216,9 @@ Follow \href{https://github.com/}{this link to GitHub's account creation
 page}. And \emph{don't be intimidated} by the ``Built for developers''
 label.
 
+Once you've set up your account, GitHub will email a confirmation
+letter. \textbf{Make sure to click the confirm button} in the email.
+
 \section{RStudio cloud}\label{rstudio-cloud}
 
 We want you to have access to RStudio so that you can use it \emph{if
@@ -243,6 +246,56 @@ instructor who is setting up their statistics course.
 She's got a website for her course, a couple of interactive lessons, and
 so on.
 
+One way to get a quick start on your own website, lessons, etc. is to
+copy Annie's project to your own accounts. Then customize it for your
+own purposes.
+
+\section{\texorpdfstring{Copying Annie's \texttt{StartUsingR}
+project}{Copying Annie's StartUsingR project}}\label{copying-annies-startusingr-project}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Using your browser, login to your account on \texttt{rstudio.cloud}.
+  The main page for your ``workspace'' will be displayed.
+\item
+  Open a new tab in the browser. Cut and paste exactly this URL into
+  that new tab.
+
+  \texttt{https://rstudio.cloud/project/40418}
+
+  Annie's template will be copied into your workspace. It will open with
+  a red ``Temporary'' in the top line.
+\item
+  Press ``Save a permanent copy'' so that you have your own, fully
+  independent copy of Annie's StartUsingR project.
+\end{enumerate}
+
+To transform StatPrep Annie's web site to your own, just edit the
+\texttt{docs/index.Rmd} file in your copy of the project. Chapter
+{[}\#Your\_course\_web\_site{]} shows how to publish the website.
+
+\subsection{Note for those using desktop
+RStudio}\label{note-for-those-using-desktop-rstudio}
+
+Copying Annie's \texttt{StartUsingR} project can be done with the ``new
+project'' menu in RStudio. Choose to create a new project from a GitHub
+repo using this address for cloning:
+
+\begin{verbatim}
+https://github.com/StatPrep-Annie/StartingR.git
+\end{verbatim}
+
+\section{\texorpdfstring{Editing
+\texttt{docs/index.Rmd}}{Editing docs/index.Rmd}}\label{editing-docsindex.rmd}
+
+This will have instructions for editing \texttt{docs/index.Rmd}
+
+\section{Writing your own tutorial}\label{writing-your-own-tutorial}
+
+The file \texttt{tutorials/first-tutorial/first-tutorial.Rmd} has a
+template for a tutorial lesson.
+
 \chapter{Your course web site}\label{your-course-web-site}
 
 As statistics instructors start using data in their classes, they find
@@ -259,148 +312,141 @@ grumble about Blackboard and Moodle) The point of this repository is to
 help you set up your own course web site on which you can place data
 files, etc. so that your students can easily get to them.
 
-You don't need to know even what a ``repository'' is. You'll be able to
-add files to your web site and edit documents from an ordinary brower.
+\section{Starting point \ldots{}}\label{starting-point}
 
-The main resource we'll use is \emph{GitHub}. This is a free service
-that's very widely used by software engineers. We won't have to do any
-engineering, but you'll have to follow a few instructions.
+We'll assume that you have already created an RStudio project, perhaps
+simply by copying StatPrep Annie's ``StartUsingR'' project to your own
+rstudio.cloud account, as described in Chapter {[}\#StatPrep\_Annie{]}
 
-At this point, make sure that you have a GitHub account. (See
-@ref(signing-up-for-cloud-services.html).)
+\section{Creating a GitHub repository for your
+project}\label{creating-a-github-repository-for-your-project}
 
-\section{Setting up your web site}\label{setting-up-your-web-site}
+Leaving your RStudio.cloud tab for a few moments, you're going to create
+a new repository on GitHub to use for publishing web pages from your
+project.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
-  Open up another browser window, so that you can look at these
-  instructions at the same time as you are working on your site.
+  Login to GitHub. Once you have done this, access the +v dropdown menu
+  in the upper right of the GitHub display:
+
+  \begin{figure}
+  \centering
+  \includegraphics{images/new_repo1.png}
+  \caption{}
+  \end{figure}
+
+  Select ``new repository''
 \item
-  Login to GitHub in the browser window you opened in (1).
-\item
-  Open up one of the following links in the other browser window.
+  In response to your selecting ``new repository,'' GitHub will display
+  a set-up page:
+
+  \begin{figure}
+  \centering
+  \includegraphics{images/new_repo2.png}
+  \caption{}
+  \end{figure}
 
   \begin{itemize}
   \tightlist
   \item
-    \href{https://github.com/StatPREP/one-page-website}{One-file web
-    site} uses only GitHub.
+    Choose a suitable name for the repo. For instance, if this is to be
+    a course site, you might use the name of the course, e.g.
+    \texttt{Stat101}.
   \item
-    \href{https://github.com/StatPREP/website-template}{Many-file web
-    site} requires RStudio for editing. These are both ``repositories''
-    under the StatPREP organization.
+    Once you have set the new repository's name, skip directly on down
+    to the green ``Create repository'' button. Press it
   \end{itemize}
 \item
-  Whichever option you selected in (2), find the ``Fork'' button in the
-  upper right-hand corner of the StatPREP repository. Chances are,
-  you'll be asked whether you want to set this up in your own account.
-  You do.
+  GitHub will now display a ``Quick setup page.'' Near the top will be a
+  section that looks like this:
+
+  \begin{figure}
+  \centering
+  \includegraphics{images/new_repo3.png}
+  \caption{}
+  \end{figure}
 \end{enumerate}
 
-At this point, you should have two browser windows open. One for these
-instructions, the other for your GitHub repository. You are going to be
-working in the GitHub repository window.
+Note the repo URL that appears in the editing box. It is composed from
+your GitHub user name and the name you selected for the repository. Keep
+that handy. Later, you're going to paste that URL into a command.
+
+\section{Connecting your RStudio project to
+GitHub}\label{connecting-your-rstudio-project-to-github}
+
+Your task now is to connect your own copy of the StartUsingR project to
+GitHub. To do this, go back to your rstudio.cloud tab displaying your
+project.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
 \item
-  Press the \includegraphics{images/settings-github.png} button. In the
-  page that appears \ldots{}
+  In the Git tab in RStudio, select the ``gear'' menu and then
+  ``shell.'' \includegraphics{images/new_repo4.png}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Change the name of the repository to something appropriate for your
-    course. Stat\_105? Keep it short and don't use any spaces. Use
-    underscores instead.
-  \item
-    Scroll down to the settings section headed GitHub pages.
-    \includegraphics{images/gh-pages.png} Select the drop-down menu to
-    read ``master branch /docs folder''.
-  \item
-    Copy the link that follows ``Your site is published at \ldots{}.''
-    This is the link you will give your students. Note that it is formed
-    from your GitHub ID and the repository name. That's why you want
-    both of these to be memorable.
-  \end{enumerate}
+  This will open up a new tab called ``Terminal'', next to the console.
 \item
-  Try it out by pasting the link into the URL bar for another browser
+  In the Terminal tab, cut and paste these commands, making sure to
+  \textbf{provide your own email address and name} rather than StatPrep
+  Annie's. (If you have multiple email addresses, or multiple names, you
+  can use any of them!)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git config }\OperatorTok{--}\NormalTok{global user.email }\StringTok{"StatPrep.Annie@gmail.com"}
+\NormalTok{git config }\OperatorTok{--}\NormalTok{global user.name }\StringTok{"StatPrep Annie"}
+\end{Highlighting}
+\end{Shaded}
+
+  Press enter. There will be no response by the computer. You're going
+  to be using the terminal tab later, as well.
+\item
+  Give the command, in the terminal tab, that will instruct RStudio to
+  refer to your GitHub repository. The command will look like the
+  following, but \textbf{you must} change \texttt{USERNAME} to be your
+  own GitHub username, and change \texttt{REPOSITORY} to be your own
+  repository, set up in Step (1) of this section.
+
+\begin{verbatim}
+git remote set-url origin <paste_your_repo_URL_here>
+\end{verbatim}
+
+  Again, when you press ``enter'', the computer will not respond.
+\item
+  In RStudio, open up some file, say, \texttt{README.Rmd}, and make some
+  trivial change, such as adding a space after the document title. Then
+  save the file.
+\item
+  In RStudio, go to the Git tab. You will see the name of the file you
+  just edited (and maybe some others). Check the little box under
+  ``Staged'' to the left of the file name. Then, press Commit.
+\item
+  A new window will open that looks like a bigger version of the Git
   tab.
+
+  \begin{figure}
+  \centering
+  \includegraphics{images/new_repo6.png}
+  \caption{}
+  \end{figure}
+
+  Write some short message in the box and press the ``commit'' button
+  underneath the message box.
 \item
-  Oh \ldots{} you might want to customize the content before you give
-  the link to your students.
+  Almost done \ldots{} Press the green upward pointing arrow above the
+  message box. You will be prompted to enter your GitHub account ID and
+  password. Do so.
+\item
+  Now back to your GitHub account. Go to the repository you set up and
+  press ``settings.'' Under gh-pages in settings, select ``master branch
+  docs folder.'' In response, a github.io URL will appear in the
+  gh-pages section. That's the address of the web site.
 \end{enumerate}
 
-\section{Customizing the site
-content.}\label{customizing-the-site-content.}
-
-How you are going to customize the content depends on whether you chose
-to create a one-page web site or a site that you can edit with RStudio.
-
-\subsection{One-page web site
-customization}\label{one-page-web-site-customization}
-
-When you are setting up your repository, you will be logged into GitHub
-and at a URL like this:
-\texttt{github.com/}\emph{your\_user\_ID}\texttt{/}\emph{your\_course\_name}.
-
-When your students look at the repository, or when you make links to
-data files, etc., the URL will look like
-\emph{your\_user\_ID}\texttt{.github.io/}\emph{your\_course\_name}. Make
-sure it's clear to you how the GitHub user URL differs from the URL for
-students.
-
-We're going to do some setup for your site, e.g.~customizing the front
-page, adding data files, etc. So check that you are looking at your
-GitHub repository:
-\texttt{github.com/}\emph{your\_user\_ID}\texttt{/}\emph{your\_course\_name}.
-
-You can see a list of files, starting with a folder called ``docs''. The
-docs folder is where you will put all of the materials for your web
-site. Click on the name ``docs'' and you will see what files are already
-in the directory. There are two:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{test.csv} - a really small CSV data file
-\item
-  \texttt{index.md} - a text file containing the front page of your new
-  site.
-\end{itemize}
-
-What might confuse you is that the site URL from the students' point of
-view is something like
-\texttt{http://}\emph{your\_user\_ID}\texttt{.github.io/}\emph{your\_course\_name},
-which does not include the word \texttt{docs}. Get used to it. The URL
-really does point to the \texttt{docs} directory. And, since there is a
-file called \texttt{index.md} in the \texttt{docs} directory, per the
-standard behaviour of web sites the contents of \texttt{index.md} are
-what will be displayed when someone points their browser to your
-\texttt{github.io} site.
-
-Mostly, you're going to do two things with your site:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Upload data files from your own computer into the \texttt{docs} folder
-  on your site. Conveniently, there is an ``Upload Files'' button just
-  for this purpose.
-\item
-  Edit the \texttt{index.md} file. To do this, click on the name
-  \texttt{index.md}, which will open the file. You will see a little
-  pencil icon; press that to edit the file. When you're done with your
-  edits, scroll down and press the green ``Commit changes'' button. That
-  simply saves your work. As soon as you've done this, the modified page
-  is live on your web site, but it might take a few minutes and a
-  refresh of your browser to see it.
-\end{enumerate}
+In a few minutes, you should be able to access your new web page using
+your own GitHub.io address.
 
 \subsubsection{Putting links to data files on your own course web
 site}\label{putting-links-to-data-files-on-your-own-course-web-site}
@@ -638,6 +684,68 @@ Just some preliminary notes \ldots{}
 
 Under preferences/Rmd, arrange to have the preview opened in the Viewer
 tab. It doesn't seem to work to leave it as opening in a web page.
+
+\chapter{Publishing tutorials on
+shinyapps.io}\label{publishing-tutorials-on-shinyapps.io}
+
+This chapter is not yet complete.
+
+\section{Authorizing rstudio.cloud to
+publish}\label{authorizing-rstudio.cloud-to-publish}
+
+You need to authorize \texttt{rstudio.cloud} to publish to your
+\texttt{shinyapps.io} account. How do you do this? The general idea is
+that you login to \texttt{shinyapps.io} and ask it to tell you a secret.
+Then, from \texttt{rstudio.cloud}, you send that secret back to
+\texttt{shinyapps.io}. Once \texttt{shinyapps.io} knows that
+\texttt{rstudio.cloud} is in on the secret, shinyapps will accept future
+commands from you \texttt{rstudio.cloud} account.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Login to your account on \texttt{rstudio.cloud}.
+\item
+  Open any project on \texttt{rstudio.cloud}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    From the RStudio interface, select the ``Packages'' tab and press
+    ``Install''.
+  \end{itemize}
+
+  \begin{center}\includegraphics{images/annie-install-rsconnect1} \end{center}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In the dialog box that appears, start typing \texttt{rsconnect}. At
+    some point, the dropdown menu will show that choice. Click on that
+    and press ``Install''.
+  \end{itemize}
+\end{enumerate}
+
+\begin{center}\includegraphics{images/annie-install-rsconnect2} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Login to \texttt{shinyapps.io}. Select the ``Dashboard'' tab. You'll
+  see a section entitled ``Authorize account'' with a display of
+  computer code and a ``copy to clipboard'' button. Press that button.
+  \includegraphics{images/annie-authorize-cloud2.png} Depending on your
+  browser, you may be asked to press CNTR-C to copy the code.
+\item
+  Return to the console in \texttt{rstudio.cloud} and paste in the code
+  you copied in (3).
+\end{enumerate}
+
+Press the ``Publish'' button. - Select ``RStudio Connect'' - Select
+``Publish finished document only'' - In the dialog box titled ``Select
+RStudio Connect Account'', type the address \texttt{shinyapps.io}.
 
 \bibliography{book.bib}
 

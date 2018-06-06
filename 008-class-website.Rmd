@@ -21,60 +21,72 @@ If your institution uses course support software such as Blackboard or Moodle, y
 
 Many instructors don't have a web server available to them and aren't sure how to set up a web site. (And, warranted or not, many instructors grumble about Blackboard and Moodle) The point of this repository is to help you set up your own course web site on which you can place data files, etc. so that your students can easily get to them.
 
+## Starting point ...
 
-You don't need to know even what a "repository" is. You'll be able to add files to your web site and edit documents from an ordinary brower.
+We'll assume that you have already created an RStudio project, perhaps simply by copying StatPrep Annie's "StartUsingR" project to your own rstudio.cloud account, as described in Chapter [#StatPrep_Annie]
 
-The main resource we'll use is *GitHub*. This is a free service that's very widely used by software engineers. We won't have to do any engineering, but you'll have to follow a few instructions.
+## Creating a GitHub repository for your project
 
-At this point, make sure that you have a GitHub account. (See \@ref(signing-up-for-cloud-services.html).)
+Leaving your RStudio.cloud tab for a few moments, you're going to create a new repository on GitHub to use for publishing web pages from your project.
 
-## Setting up your web site
+1. Login to GitHub. Once you have done this, access the +v dropdown menu in the upper right of the GitHub display:
 
-1. Open up another browser window, so that you can look at these instructions at the same time as you are working on your site.
-1. Login to GitHub in the browser window you opened in (1).
-2. Open up one of the following links in the other browser window.
-    - [One-file web site](https://github.com/StatPREP/one-page-website) uses only GitHub.
-    - [Many-file web site](https://github.com/StatPREP/website-template) requires RStudio for editing.
-    These are both "repositories" under the StatPREP organization.
-3. Whichever option you selected in (2), find the "Fork" button in the upper right-hand corner of the StatPREP repository. Chances are, you'll be asked whether you want to set this up in your own account. You do. 
-
-At this point, you should have two browser windows open. One for these instructions, the other for your GitHub repository. You are going to be working in the GitHub repository window.
-
-4. Press the ![](images/settings-github.png) button. In the page that appears ...
-
-    a. Change the name of the repository to something appropriate for your course. Stat_105? Keep it short and don't use any spaces. Use underscores instead.
-    b. Scroll down to the settings section headed GitHub pages. 
-    ![](images/gh-pages.png)
-    Select the drop-down menu to read "master branch /docs folder".
-    c. Copy the link that follows "Your site is published at ...." This is the link you will give your students. Note that it is formed from your GitHub ID and the repository name. That's why you want both of these to be memorable.
+    ![](images/new_repo1.png)
     
-5. Try it out by pasting the link into the URL bar for another browser tab.
+    Select "new repository"
 
-6. Oh ... you might want to customize the content before you give the link to your students.
+2. In response to your selecting "new repository," GitHub will display a set-up page:
 
-## Customizing the site content.
+    ![](images/new_repo2.png)
+    
+    - Choose a suitable name for the repo. For instance, if this is to be a course site, you might use the name of the course, e.g. `Stat101`.
+    - Once you have set the new repository's name, skip directly on down to the green "Create repository" button. Press it
+    
+3. GitHub will now display a "Quick setup page." Near the top will be a section that looks like this:
 
-How you are going to customize the content depends on whether you chose to create a one-page web site or a site that you can edit with RStudio.
+    ![](images/new_repo3.png)
 
-### One-page web site customization
+Note the repo URL that appears in the editing box. It is composed from your GitHub user name and the name you selected for the repository. Keep that handy. Later, you're going to paste that URL into a command.
 
-When you are setting up your repository, you will be logged into GitHub and at a URL like this: `github.com/`*your_user_ID*`/`*your_course_name*.
 
-When your students look at the repository, or when you make links to data files, etc., the URL will look like *your_user_ID*`.github.io/`*your_course_name*. Make sure it's clear to you how the GitHub user URL differs from the URL for students.
+## Connecting your RStudio project to GitHub
 
-We're going to do some setup for your site, e.g. customizing the front page, adding data files, etc. So check that you are looking at your GitHub repository: `github.com/`*your_user_ID*`/`*your_course_name*. 
+Your task now is to connect your own copy of the StartUsingR project to GitHub. To do this, go back to your rstudio.cloud tab displaying your project.
 
-You can see a list of files, starting with a folder called "docs". The docs folder is where you will put all of the materials for your web site. Click on the name "docs" and you will see what files are already in the directory.  There are two:
+1. In the Git tab in RStudio, select the "gear" menu and then "shell." 
+    ![](images/new_repo4.png)
 
-- `test.csv` - a really small CSV data file
-- `index.md` - a text file containing the front page of your new site.
+    This will open up a new tab called "Terminal", next to the console.
 
-What might confuse you is that the site URL from the students' point of view is something like `http://`*your_user_ID*`.github.io/`*your_course_name*, which does not include the word `docs`. Get used to it. The URL really does point to the `docs` directory. And, since there is a file called `index.md` in the `docs` directory, per the standard behaviour of web sites the contents of `index.md` are what will be displayed when someone points their browser to your `github.io` site.
+2. In the Terminal tab, cut and paste these commands, making sure to **provide your own email address and name** rather than StatPrep Annie's. (If you have multiple email addresses, or multiple names, you can use any of them!) 
 
-Mostly, you're going to do two things with your site:
+    ```r
+git config --global user.email "StatPrep.Annie@gmail.com"
+git config --global user.name "StatPrep Annie"
+```
+    Press enter. There will be no response by the computer. You're going to be using the terminal tab later, as well.
 
-1. Upload data files from your own computer into the `docs` folder on your site. Conveniently, there is an "Upload Files" button just for this purpose.
-2. Edit the `index.md` file. To do this, click on the name `index.md`, which will open the file. You will see a little pencil icon; press that to edit the file. When you're done with your edits, scroll down and press the green "Commit changes" button. That simply saves your work. As soon as you've done this, the modified page is live on your web site, but it might take a few minutes and a refresh of your browser to see it.
+3. Give the command, in the terminal tab, that will instruct RStudio to refer to your GitHub repository. The command will look like the following, but **you must** change `USERNAME` to be your own GitHub username, and change `REPOSITORY` to be your own repository, set up in Step (1) of this section.
+```
+git remote set-url origin <paste_your_repo_URL_here>
+```
+    Again, when you press "enter", the computer will not respond.
+
+4. In RStudio, open up some file, say, `README.Rmd`, and make some trivial change, such as adding a space after the document title. Then save the file.
+
+5. In RStudio, go to the Git tab. You will see the name of the file you just edited (and maybe some others). Check the little box under "Staged" to the left of the file name. Then, press Commit.
+
+6. A new window will open that looks like a bigger version of the Git tab. 
+
+    ![](images/new_repo6.png)
+
+    Write some short message in the box and press the "commit" button underneath the message box. 
+
+7. Almost done ... Press the green upward pointing arrow above the message box. You will be prompted to enter your GitHub account ID and password. Do so.
+
+8. Now back to your GitHub account. Go to the repository you set up and press "settings." Under gh-pages in settings, select "master branch docs folder." In response, a github.io URL will appear in the gh-pages section. That's the address of the web site.
+
+In a few minutes, you should be able to access your new web page using your own GitHub.io address.
 
 #### Putting links to data files on your own course web site
 
