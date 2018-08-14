@@ -1,0 +1,20 @@
+# Miscellaneous questions
+
+This section is merely a place to store questions while we figure out how to organize them more systematically.
+
+
+## Graphics on stats
+
+I’ve been trying to learn ggformula since the StatPREP workshop in Santa Clarita. In one of your [posts online](https://dtkaplan.shinyapps.io/Tutorial_data_and_Statistical_Graphics/#section-statistical-graphics), you showed jitterplots with a mean line for each . I was wondering how to produce that graph using ggformula. Can you please help?
+
+> I've been using the `gf_errorbar()` layer, putting both the top and bottom lines of the errorbar at the same place, e.g.
+
+```{r}
+stats <- df_stats(mpg ~ cyl, data = mtcars)
+gf_jitter(mpg ~ cyl, data = mtcars) %>%
+ gf_errorbar(mean + mean ~ cyl, data = stats, color = "blue")
+```
+
+> Ultimately, I want to make a `gf_stats()` function that will do the right graphics thing automatically and would avoid needing to call `df_stats()`.
+
+## Next ...
